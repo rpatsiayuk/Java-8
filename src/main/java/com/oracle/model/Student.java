@@ -62,4 +62,20 @@ public class Student {
         students.add(new Student("Rima", "Kurnosova", 18));
         return students;
     }
+
+    public static long getNumberOfStudentsOldVersion(List<Student> students) {
+        long count = 0;
+        for (Student st : students) {
+            if (st.getAge() >= 20) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public static long getNumberOfStudentsJava8Version(List<Student> students) {
+        return students.stream()
+                .filter(st -> st.getAge() >= 20)
+                .count();
+    }
 }
